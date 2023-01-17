@@ -7,16 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CustomAdapter(private val dataSet: Array<String>) :
+class CustomAdapter(val dataSet: ArrayList<String>, val onItemClickListener: () -> Unit) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder)
-     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
-
         init {
             // Define click listener for the ViewHolder's View
             textView = view.findViewById(R.id.textView)
@@ -38,6 +33,9 @@ class CustomAdapter(private val dataSet: Array<String>) :
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.textView.text = dataSet[position]
+        viewHolder.itemView.setOnClickListener{
+            onItemClickListener()
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
