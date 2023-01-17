@@ -12,7 +12,10 @@
         android:theme="@style/Theme.AndroidERestaurant"
         tools:targetApi="31">
         <activity
-            android:name=".NouritureActivity"
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

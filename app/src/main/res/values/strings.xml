@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
+    <string-array name="entrees">
+        <item>foie gras</item>
+        <item>soupe de poisson</item>
+        <item>asperge</item>
+    </string-array>
+    <string-array name="plats">
+        <item>cote de beuf</item>
+        <item>doarde grillé</item>
+        <item>magret de canar</item>
+    </string-array>
+    <string-array name="dessert">
+        <item>tiramissu</item>
+        <item>fondant au chocolat</item>
+        <item>fruits glacée</item>
+    </string-array>
 </resources>

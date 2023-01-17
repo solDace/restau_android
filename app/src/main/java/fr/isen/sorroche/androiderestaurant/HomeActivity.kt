@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun changePage(Button: Button){
-        val intent = Intent(this, NouritureActivity::class.java)
+        val intent = Intent(this, CategoryActivity::class.java)
         intent.putExtra("title", Button.text)
         startActivity(intent)
     }
