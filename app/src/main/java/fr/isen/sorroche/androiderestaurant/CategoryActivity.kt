@@ -1,9 +1,9 @@
 package fr.isen.sorroche.androiderestaurant
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -11,10 +11,9 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-
 import fr.isen.sorroche.androiderestaurant.databinding.ActivityCategoryBinding
-import fr.isen.sorroche.androidrestaurant.model.Data
 import fr.isen.sorroche.androidrestaurant.model.DataResult
+import fr.isen.sorroche.androidrestaurant.model.Items
 import org.json.JSONObject
 
 
@@ -29,7 +28,6 @@ class CategoryActivity : AppCompatActivity() {
         val title = binding.titre
         title.text = intent.getStringExtra("title")
 
-        val dishes = resources.getStringArray(R.array.plats).toList() as ArrayList<String>
         binding.recyclerviewListMenu.layoutManager = LinearLayoutManager(this)
         binding.recyclerviewListMenu.adapter = CustomAdapter(arrayListOf()) {
             val intent = Intent(this, DetailActivity::class.java)
@@ -57,6 +55,7 @@ class CategoryActivity : AppCompatActivity() {
         val dishCategory=dishesResult.data.firstOrNull{it.nameFr == intent.getStringExtra("title") }
 
         val adapter = binding.recyclerviewListMenu.adapter as CustomAdapter
-        adapter.refreshList(dishCategory?.items?.map {it.nameFr} as ArrayList<String>)
+        adapter.refreshList(dishCategory?.items as ArrayList<Items>)
     }
+
 }

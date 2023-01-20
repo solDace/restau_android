@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
+    <string name="entrees">Entrées</string>
+    <string name="r2d2_restaurant">R2D2 Restaurant</string>
+    <string name="plats">Plats</string>
+    <string name="desserts">Desserts</string>
     <string-array name="entrees">
         <item>foie gras</item>
         <item>soupe de poisson</item>
