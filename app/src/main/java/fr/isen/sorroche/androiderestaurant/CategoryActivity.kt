@@ -7,10 +7,14 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 
 import fr.isen.sorroche.androiderestaurant.databinding.ActivityCategoryBinding
+import fr.isen.sorroche.androidrestaurant.model.Data
+import fr.isen.sorroche.androidrestaurant.model.DataResult
 import org.json.JSONObject
 
 
@@ -33,18 +37,26 @@ class CategoryActivity : AppCompatActivity() {
         }
         loadDishesFromAPI()
     }
-    private fun loadDishesFromAPI(){
-        Volley.newRequestQueue(this)
-        val url="http://test.api.catering.bluecodegames.com/menu"
+
+    private fun loadDishesFromAPI() {
+
+        val url = "http://test.api.catering.bluecodegames.com/menu"
         val jsonObject = JSONObject()
-        jsonObject.put("id_shop","1")
-        val jsonRequest = JsonObjectRequest(Request.Method.POST, url, jsonObject,
-            {
-            Log.w("categoryActivity","response : $it")
-        }, {
-            Log.w("categoryActivity","erreur : $it")
+        jsonObject.put("id_shop", "1")
+        val jsonRequest = JsonObjectRequest(Request.Method.POST, url, jsonObject, {
+                    Log.w("CategoryActivity","erreur : $it")
+                    handleAPIData(it.toString())
+            }, Response.ErrorListener {
+                Log.e("CategoryActivity", "erreur : $it")
             })
         Volley.newRequestQueue(this).add(jsonRequest)
     }
 
+    private fun handleAPIData(data: String){
+        var dishesResult = Gson().fromJson(data, DataResult::class.java)
+        val dishCategory=dishesResult.data.firstOrNull{it.nameFr == intent.getStringExtra("title") }
+
+        val adapter = binding.recyclerviewListMenu.adapter as CustomAdapter
+        adapter.refreshList(dishCategory?.items?.map {it.nameFr} as ArrayList<String>)
+    }
 }

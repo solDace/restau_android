@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CustomAdapter(val dataSet: ArrayList<String>, val onItemClickListener: () -> Unit) :
+class CustomAdapter(var dataSet: ArrayList<String>, val onItemClickListener: () -> Unit) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -40,5 +40,10 @@ class CustomAdapter(val dataSet: ArrayList<String>, val onItemClickListener: () 
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
+
+    fun refreshList(dishesFromAPI: ArrayList<String>){
+        dataSet =dishesFromAPI
+        notifyDataSetChanged()
+    }
 
 }
