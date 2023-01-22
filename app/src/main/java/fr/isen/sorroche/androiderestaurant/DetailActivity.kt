@@ -22,7 +22,8 @@ import org.json.JSONObject
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var dish : Items
+    private var quantity: Int = 0
+    private lateinit var it: Items
     private lateinit var binding: ActivityDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val it:Items = intent.getSerializableExtra("item") as Items
+        it = intent.getSerializableExtra("item") as Items
 
         val firstImage = it.images[0]
         if (firstImage.isNotEmpty()) {
@@ -42,7 +43,25 @@ class DetailActivity : AppCompatActivity() {
         binding.ingredient.text = it.ingredients?.joinToString(", ") { it.nameFr.toString() }
 
 
+            binding.achatDetail.text = it.prices[0].price.toString()+ "€"
 
+
+        binding.less.setOnClickListener {
+            if (binding.quantity.text.toString().toInt() > 0) {
+                quantity--
+                changePrice()
+                binding.quantity.text = quantity.toString()
+            }
+        }
+        binding.more.setOnClickListener {
+            quantity++
+            changePrice()
+            binding.quantity.text = quantity.toString()
+        }
+
+    }
+    fun changePrice(){
+            binding.achatDetail.text = ((it.prices[0].price?.toInt() ?: 0) * quantity).toString() +"€"
     }
 
 }
