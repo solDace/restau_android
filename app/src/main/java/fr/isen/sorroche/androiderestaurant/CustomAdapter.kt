@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import fr.isen.sorroche.androidrestaurant.model.Items
 
 
-class CustomAdapter(var dataSet: ArrayList<Items>, val onItemClickListener: () -> Unit) :
+class CustomAdapter(var dataSet: ArrayList<Items>, val onItemClickListener: (Items) -> Unit) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -62,7 +62,7 @@ class CustomAdapter(var dataSet: ArrayList<Items>, val onItemClickListener: () -
         }
 
         viewHolder.itemView.setOnClickListener{
-            onItemClickListener()
+            onItemClickListener(dataSet[position])
         }
     }
 

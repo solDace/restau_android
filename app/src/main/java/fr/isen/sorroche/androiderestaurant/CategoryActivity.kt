@@ -31,6 +31,7 @@ class CategoryActivity : AppCompatActivity() {
         binding.recyclerviewListMenu.layoutManager = LinearLayoutManager(this)
         binding.recyclerviewListMenu.adapter = CustomAdapter(arrayListOf()) {
             val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("item", it)
             startActivity(intent)
         }
         loadDishesFromAPI()
