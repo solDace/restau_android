@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".DetailActivity">
 
     <ImageView
@@ -19,8 +20,11 @@
         android:id="@+id/text_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/material_dynamic_neutral60"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_detail" />
@@ -29,8 +33,11 @@
         android:id="@+id/ingredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/material_dynamic_neutral60"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_detail" />
@@ -39,21 +46,24 @@
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="133dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="60dp"
         android:text="0"
+        android:textColor="@color/material_dynamic_neutral60"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredient" />
+        app:layout_constraintTop_toBottomOf="@+id/image_detail" />
 
     <Button
         android:id="@+id/less"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="179dp"
-        android:layout_marginEnd="38dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="190dp"
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/quantity"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_detail" />
 
@@ -61,9 +71,8 @@
         android:id="@+id/more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="179dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="60dp"
         android:text="+"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/quantity"
@@ -73,12 +82,13 @@
         android:id="@+id/achat_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="160dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

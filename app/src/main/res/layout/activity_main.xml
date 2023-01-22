@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/t_l_chargement"
     tools:context=".HomeActivity">
 
     <TextView
@@ -13,6 +14,7 @@
         android:layout_marginTop="50dp"
         android:rotationX="37"
         android:text="@string/r2d2_restaurant"
+        android:textColor="@android:color/holo_orange_light"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

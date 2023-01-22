@@ -36,32 +36,27 @@ class DetailActivity : AppCompatActivity() {
 
         val firstImage = it.images[0]
         if (firstImage.isNotEmpty()) {
-            Picasso.get().load(firstImage).into(binding.imageDetail)
+            Picasso.get().load(firstImage).resize(850,550).into(binding.imageDetail)
         }
 
         binding.textDetail.text = it.nameFr
         binding.ingredient.text = it.ingredients?.joinToString(", ") { it.nameFr.toString() }
-
-
-            binding.achatDetail.text = it.prices[0].price.toString()+ "€"
-
-
+        binding.achatDetail.text = it.prices[0].price.toString()+ "€"
         binding.less.setOnClickListener {
             if (binding.quantity.text.toString().toInt() > 0) {
                 quantity--
                 changePrice()
-                binding.quantity.text = quantity.toString()
             }
         }
         binding.more.setOnClickListener {
             quantity++
             changePrice()
-            binding.quantity.text = quantity.toString()
         }
-
     }
+
     fun changePrice(){
-            binding.achatDetail.text = ((it.prices[0].price?.toInt() ?: 0) * quantity).toString() +"€"
+        binding.achatDetail.text = ((it.prices[0].price?.toInt() ?: 0) * quantity).toString() +"€"
+        binding.quantity.text = quantity.toString()
     }
 
 }
