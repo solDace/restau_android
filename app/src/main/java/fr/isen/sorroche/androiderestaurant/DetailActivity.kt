@@ -34,10 +34,7 @@ class DetailActivity : AppCompatActivity() {
 
         it = intent.getSerializableExtra("item") as Items
 
-        val firstImage = it.images[0]
-        if (firstImage.isNotEmpty()) {
-            Picasso.get().load(firstImage).resize(850,550).into(binding.imageDetail)
-        }
+        binding.caroussel.adapter = DetailAdapter(this,it.images)
 
         binding.textDetail.text = it.nameFr
         binding.ingredient.text = it.ingredients?.joinToString(", ") { it.nameFr.toString() }
