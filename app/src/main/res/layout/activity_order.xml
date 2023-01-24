@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/avectors180900110"
-    tools:context=".CategoryActivity">
+    tools:context=".OrderActivity">
 
     <TextView
         android:id="@+id/titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new page"
+        android:text="Panier"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,24 +20,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.075" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_list_menu"
-        android:layout_width="409dp"
-        android:layout_height="538dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titre" />
-
     <Button
-        android:id="@+id/go_to_order"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:text="order"
-        android:textColor="@color/design_default_color_background"
+        android:layout_marginBottom="150dp"
+        android:text="reset"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

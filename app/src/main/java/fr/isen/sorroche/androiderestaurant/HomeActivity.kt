@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import fr.isen.sorroche.androiderestaurant.databinding.ActivityMainBinding
 
@@ -18,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
         binding.entrees.setOnClickListener{ changePage(binding.entrees) }
         binding.plats.setOnClickListener{ changePage(binding.plats) }
         binding.desserts.setOnClickListener{ changePage(binding.desserts) }
+        binding.goToOrder.setOnClickListener{go_in_order()}
 
     }
 
@@ -29,6 +31,11 @@ class HomeActivity : AppCompatActivity() {
     fun changePage(Button: Button){
         val intent = Intent(this, CategoryActivity::class.java)
         intent.putExtra("title", Button.text)
+        startActivity(intent)
+    }
+
+    fun go_in_order(){
+        val intent = Intent(this, OrderActivity::class.java)
         startActivity(intent)
     }
 }

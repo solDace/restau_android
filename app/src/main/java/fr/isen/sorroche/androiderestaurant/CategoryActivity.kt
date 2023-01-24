@@ -24,6 +24,7 @@ class CategoryActivity : AppCompatActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.goToOrder.setOnClickListener{go_in_order()}
 
         val title = binding.titre
         title.text = intent.getStringExtra("title")
@@ -57,6 +58,11 @@ class CategoryActivity : AppCompatActivity() {
 
         val adapter = binding.recyclerviewListMenu.adapter as CustomAdapter
         adapter.refreshList(dishCategory?.items as ArrayList<Items>)
+    }
+
+    fun go_in_order(){
+        val intent = Intent(this, OrderActivity::class.java)
+        startActivity(intent)
     }
 
 }
