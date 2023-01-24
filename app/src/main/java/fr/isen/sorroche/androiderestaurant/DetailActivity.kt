@@ -2,29 +2,23 @@ package fr.isen.sorroche.androiderestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.Button
-import android.widget.TableRow
-import android.widget.TextView
-import android.widget.Toast
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.squareup.picasso.Picasso
-import fr.isen.sorroche.androiderestaurant.databinding.ActivityCategoryBinding
+import android.util.Log
+import com.google.android.material.snackbar.Snackbar
 import fr.isen.sorroche.androiderestaurant.databinding.ActivityDetailBinding
+import fr.isen.sorroche.androiderestaurant.model.Panier
+import fr.isen.sorroche.androiderestaurant.model.Plats
 import fr.isen.sorroche.androidrestaurant.model.Items
-import org.json.JSONObject
+
+
 
 class DetailActivity : AppCompatActivity() {
 
     private var quantity: Int = 0
     private lateinit var it: Items
+    private lateinit var panier: Panier
     private lateinit var binding: ActivityDetailBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -33,6 +27,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         it = intent.getSerializableExtra("item") as Items
+        panier= Panier(mutableListOf<Plats>())
 
         binding.caroussel.adapter = DetailAdapter(this,it.images)
 
@@ -49,11 +44,23 @@ class DetailActivity : AppCompatActivity() {
             quantity++
             changePrice()
         }
+
+        binding.achatDetail.setOnClickListener{
+            if (quantity>0){
+                ajoutPanier()
+            }
+        }
     }
 
     fun changePrice(){
         binding.achatDetail.text = ((it.prices[0].price?.toInt() ?: 0) * quantity).toString() +"€"
         binding.quantity.text = quantity.toString()
+    }
+
+    fun ajoutPanier(){
+        panier.panierObjectList.add(Plats(it,quantity))
+        Log.i("CART_CONTAINER", panier.toString())
+        Snackbar.make(binding.root, "Plat ajouté au panier "+quantity+" "+it.nameFr, Snackbar.LENGTH_SHORT).show()
     }
 
 }
