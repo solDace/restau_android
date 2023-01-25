@@ -17,7 +17,7 @@ class CustomAdapter(var dataSet: ArrayList<Items>, val onItemClickListener: (Ite
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.textView)
+        val textView: TextView = view.findViewById(R.id.name_plat_order)
         val image :ImageView = view.findViewById(R.id.imageview)
         val prices :TableLayout = view.findViewById(R.id.prices)
          fun setPrices(elem: Items) {
