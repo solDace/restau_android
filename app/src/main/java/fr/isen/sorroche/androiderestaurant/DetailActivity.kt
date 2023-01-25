@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.GsonBuilder
 import fr.isen.sorroche.androiderestaurant.databinding.ActivityDetailBinding
 import fr.isen.sorroche.androiderestaurant.model.Panier
 import fr.isen.sorroche.androiderestaurant.model.Plats
 import fr.isen.sorroche.androidrestaurant.model.Items
-
+import java.io.File
 
 
 class DetailActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var it: Items
     private lateinit var panier: Panier
     private lateinit var binding: ActivityDetailBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +63,9 @@ class DetailActivity : AppCompatActivity() {
         panier.panierObjectList.add(Plats(it,quantity))
         Log.i("CART_CONTAINER", panier.toString())
         Snackbar.make(binding.root, "Plat ajouté au panier "+quantity+" "+it.nameFr, Snackbar.LENGTH_SHORT).show()
+        val jsonBuilder= GsonBuilder().setPrettyPrinting().create()
+        val jsonText = jsonBuilder.toJson(panier)
+        File(cacheDir.absolutePath,"panier_courant.json").writeText(jsonText)
     }
 
 }
