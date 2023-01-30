@@ -67,6 +67,7 @@ class DetailActivity : AppCompatActivity() {
             val gson=Gson()
             val tabPanierEnregistre = gson.fromJson(jsonString,Panier::class.java)
             if(tabPanierEnregistre.panierObjectList.any { it.plat.id == currentDish.id  }){
+                //todo finir
                 //tabPanierEnregistre.panierObjectList.replaceAll {  }
             }else{
                 //Log.i("panier", panier.panierObjectList.toString())
