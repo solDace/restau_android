@@ -30,7 +30,7 @@ class OrderAdapter (var dataSet: List<Plats>) :
     override fun onBindViewHolder(viewHolder: OrderAdapter.ViewHolder, position: Int) {
 
         viewHolder.name.text = dataSet[position].plat.nameFr
-        viewHolder.price.text = (dataSet[position].nb_plat * dataSet[position].plat.prices[0].price!!.toInt()).toString()
+        viewHolder.price.text = (dataSet[position].nb_plat * dataSet[position].plat.prices[0].price!!.toFloat()).toString()
         viewHolder.quality.text=dataSet[position].nb_plat.toString()
     }
 

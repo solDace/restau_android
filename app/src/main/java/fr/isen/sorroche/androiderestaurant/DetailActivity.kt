@@ -56,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun changePrice(){
-        binding.achatDetail.text = ((currentDish.prices[0].price?.toInt() ?: 0) * quantity).toString() +"€"
+        binding.achatDetail.text = (currentDish.prices[0].price?.times(quantity)).toString() +"€"
         binding.quantity.text = quantity.toString()
     }
 
