@@ -17,6 +17,7 @@ import java.io.FileInputStream
 class OrderActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOrderBinding
+    private lateinit var adapter: OrderAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
@@ -28,16 +29,14 @@ class OrderActivity : AppCompatActivity() {
 
         val file = File(cacheDir.absolutePath,"panier_courant.json")
         if (file.exists()){
-            val inputStream = FileInputStream(file)
-            val buffer = ByteArray(inputStream.available())
-            inputStream.read(buffer)
-            val jsonString = String(buffer)
+            val jsonString = file.readText()
             val gson=Gson()
             val tabPanierEnregistre = gson.fromJson(jsonString,Panier::class.java)
             val pEnregistre =tabPanierEnregistre.panierObjectList
 
             binding.recyclerViewPanier.layoutManager = LinearLayoutManager(this)
-            binding.recyclerViewPanier.adapter = OrderAdapter(pEnregistre)
+            adapter = OrderAdapter(pEnregistre)
+            binding.recyclerViewPanier.adapter = adapter
         }
     }
 

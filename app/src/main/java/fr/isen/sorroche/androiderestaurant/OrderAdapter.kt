@@ -17,9 +17,6 @@ class OrderAdapter (var dataSet: List<Plats>) :
         val quality: TextView = view.findViewById(R.id.quantity_plat_order)
         val price: TextView = view.findViewById(R.id.tot_price_plat_order)
 
-        fun setPrices(plats: Plats){
-            //todo
-        }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -33,7 +30,7 @@ class OrderAdapter (var dataSet: List<Plats>) :
     override fun onBindViewHolder(viewHolder: OrderAdapter.ViewHolder, position: Int) {
 
         viewHolder.name.text = dataSet[position].plat.nameFr
-        //viewHolder.setPrices(dataSet[position])
+        viewHolder.price.text = (dataSet[position].nb_plat * dataSet[position].plat.prices[0].price!!.toInt()).toString()
         viewHolder.quality.text=dataSet[position].nb_plat.toString()
     }
 
